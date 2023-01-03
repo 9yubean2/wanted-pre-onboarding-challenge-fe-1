@@ -3,7 +3,7 @@ import React from 'react'
 export default function Header() {
     
     const btnLogout = () => {
-        alert('logout!');
+        alert('로그아웃 버튼입니다!');
     }
 
     return (

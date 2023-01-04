@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#ffffff] p-4 sm:px-6 md:px-6 lg:px-10 xl:px-10 2xl:px-10">
+    <footer className="bg-[#f1f1f1] p-4 sm:px-6 md:px-6 lg:px-10 xl:px-10 2xl:px-10">
             
     <div className="sm:flex-col sm:items-center ">
         {/* <span className="self-center text-[24px] font-semibold whitespace-nowrap">✅ Todos</span> */}

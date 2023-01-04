@@ -1,13 +1,17 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    
+    let navigate = useNavigate();
     const btnLogout = () => {
-        alert('로그아웃 버튼입니다!');
+        if (window.confirm('로그아웃하시겠습니까?')) {
+            localStorage.clear();
+            navigate('/auth');
+        }
     }
 
     return (
-        <nav className="bg-white drop-shadow-[4px_2px_2px_rgba(0,0,0,0.11)]">
+        <nav className="bg-white drop-shadow-[4px_2px_2px_rgba(0,0,0,0.11)] z-40">
                 <div className="mx-auto max-w-full px-4 sm:px-6 md:px-6 lg:px-10 xl:px-10 2xl:px-10">
                     <div className="flex h-16 items-center justify-between">
                         <div className="flex items-center">

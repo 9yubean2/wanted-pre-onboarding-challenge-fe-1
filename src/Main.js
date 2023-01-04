@@ -1,21 +1,24 @@
-import React from 'react'
+import {React} from 'react'
 import Header from "./Header"
 import Footer from "./Footer"
 import List from "./List"
+import Detail from "./Detail"
 
-export default function Main() {
+
+export default function Main({navigate}) {
+
 
     return (
         <div className="h-screen flex flex-col w-full">
+            
             <Header/>
             
             <div className="grid grid-cols-3 flex-1">
 
                 <List/>                
 
-                <div className="col-span-2 bg-indigo-500">
-
-                </div>
+                <Detail/>
+            
             </div>
             
             <Footer/>

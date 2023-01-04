@@ -1,11 +1,11 @@
 import axios from "axios";
 import React from 'react';
-import {useNavigate} from "react-router-dom";
+
 import { useState } from "react";
 
-export default function Auth() {
+export default function Auth({navigate}) {
 
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
 
     const [authMode,setAuthMode]=useState(true);
     
@@ -24,7 +24,6 @@ export default function Auth() {
     }
 
     const btnLogin=()=>{
-        alert(`Login! ${email},${pw}`);
         axios.post('http://localhost:8080/users/login',{
             "email":email,
             "password":pw
@@ -34,7 +33,7 @@ export default function Auth() {
             localStorage.setItem('token', res.data.token);
             navigate("/");
         }).catch((err)=>{
-            console.log(err)
+            alert('로그인 실패!');
         })
     }
 

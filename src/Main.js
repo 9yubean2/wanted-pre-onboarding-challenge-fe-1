@@ -7,7 +7,6 @@ import Detail from "./Detail"
 
 export default function Main({navigate}) {
 
-
     return (
         <div className="h-screen flex flex-col w-full">
             

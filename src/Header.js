@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 
-export default function Header() {
+function Header() {
     let navigate = useNavigate();
     const btnLogout = () => {
         if (window.confirm('로그아웃하시겠습니까?')) {
@@ -34,3 +34,4 @@ export default function Header() {
             </nav>
     )
 }
+export default React.memo(Header);

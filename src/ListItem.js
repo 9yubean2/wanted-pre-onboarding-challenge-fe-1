@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-export default function ListItem() {
+function ListItem({item}) {
 
+    
     const btnEdit = () => {
 
     }
@@ -11,12 +12,16 @@ export default function ListItem() {
         
     }
 
+    const btnDetail = () => {
+        
+    }
+
     return (
-        <li className="flex items-center align-middle justify-between py-3">
+        <li id={item.id} className="flex items-center align-middle justify-between py-3">
             <div>
                 <input type="checkbox" className="rounded bg-white/0 border-[#767676] border-[2px]
                 focus:border-[#A6A6A6] focus:bg-white/0 text-[#A3CEA7] focus:ring-1 focus:ring-offset-2 focus:ring-[#A3CEA7]/[0.5]"/>
-                <span className="ml-5 align-middle text-[18px]">할 일 1</span>
+                <span className="ml-5 align-middle text-[18px] cursor-pointer" onClick={btnDetail}>{item.title}</span>
             </div>                                
             
             <div>
@@ -26,3 +31,4 @@ export default function ListItem() {
         </li>
     )
 }
+export default React.memo(ListItem)

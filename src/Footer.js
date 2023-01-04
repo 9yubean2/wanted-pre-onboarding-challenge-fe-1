@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Footer() {
+function Footer() {
   return (
     <footer className="bg-[#f1f1f1] p-4 sm:px-6 md:px-6 lg:px-10 xl:px-10 2xl:px-10">
             
@@ -43,3 +43,4 @@ export default function Footer() {
 </footer>
   )
 }
+export default React.memo(Footer);

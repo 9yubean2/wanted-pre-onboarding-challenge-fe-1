@@ -16,7 +16,7 @@ export default function Main({navigate}) {
             
             <div className="grid grid-cols-3 flex-1">
 
-                <List setDetailTodo={setDetailTodo} setSearchParams={setSearchParams}/>                
+                <List setDetailTodo={setDetailTodo} searchParams={searchParams} setSearchParams={setSearchParams}/>                
 
                 {/* <Detail detailTodo={detailTodo}/> */}
                 <Detail detailTodo={detailTodo} setDetailTodo={setDetailTodo} searchParams={searchParams} setSearchParams={setSearchParams}/>

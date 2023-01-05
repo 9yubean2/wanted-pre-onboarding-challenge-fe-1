@@ -20,7 +20,7 @@ export default function Detail({detailTodo,setDetailTodo,searchParams}) {
     
     return (
         <div className="col-span-2 p-3">
-        {searchParams.get('id')?
+        {searchParams.get('id')||detailTodo.length?
             <div>
             <p className="self-center text-[22px] font-semibold whitespace-nowrap">✅ {detailTodo.title}</p>
             <div className="flex py-3 items-center justify-between">

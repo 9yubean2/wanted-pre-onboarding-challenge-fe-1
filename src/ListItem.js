@@ -3,7 +3,7 @@ import { React, useState,Fragment } from "react";
 import {Modal} from "flowbite-react";
 
 
-function ListItem({item,setTodoList,setDetailTodo,setSearchParams}) {
+function ListItem({item,setTodoList,setDetailTodo,searchParams,setSearchParams}) {
 
     const [openEdit, setOpenEdit] = useState(false);
     
@@ -67,12 +67,15 @@ function ListItem({item,setTodoList,setDetailTodo,setSearchParams}) {
                 }
             }).then((result)=>{
                 alert('Todo를 삭제했어요!');
+                
                 axios.get(`http://localhost:8080/todos`,{
                 headers: {
                     Authorization: localStorage.token
                 }
             }).then((res)=>{
                 setTodoList(res.data.data)
+                searchParams.delete('id')
+                setDetailTodo('')
             }).catch((err) => {
                 alert('예상치 못한 오류 발생!');
             });
@@ -82,16 +85,6 @@ function ListItem({item,setTodoList,setDetailTodo,setSearchParams}) {
     }
 
     const btnDetail = (id) => {
-        // axios.get(`http://localhost:8080/todos/${id}`,{
-        //         headers: {
-        //             Authorization: localStorage.token
-        //         }
-        //     }).then((res)=>{
-        //         setDetailTodo(res.data.data)
-        //         setSearchParams({id:`${id}`});
-        //     }).catch((err) => {
-        //         alert('예상치 못한 오류 발생!');
-        //     });
         setSearchParams({id:`${id}`});
     }
 

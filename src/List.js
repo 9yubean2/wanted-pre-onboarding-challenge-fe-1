@@ -3,9 +3,9 @@ import ListItem from "./ListItem"
 import { useState,Fragment,useEffect } from "react";
 import {Modal} from "flowbite-react";
 import axios from "axios";
+//import { useSearchParams } from "react-router-dom";
 
-
-function List({setDetailTodo,setSearchParams}) {
+function List({setDetailTodo,searchParams,setSearchParams}) {
 
     //const [searchParams, setSearchParams]=useSearchParams();
 
@@ -77,7 +77,7 @@ function List({setDetailTodo,setSearchParams}) {
             <ul>
                 {
                     todoList.map((item)=>(
-                        <ListItem key={item.id} item={item} setTodoList={setTodoList} setDetailTodo={setDetailTodo} setSearchParams={setSearchParams}/>
+                        <ListItem key={item.id} item={item} setTodoList={setTodoList} setDetailTodo={setDetailTodo} searchParams={searchParams} setSearchParams={setSearchParams}/>
                     ))
                 }
                 <li className="flex items-center py-3">

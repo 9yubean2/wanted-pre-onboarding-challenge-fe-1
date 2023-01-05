@@ -2,11 +2,9 @@ import {React,useEffect} from 'react'
 import axios from "axios";
 
 export default function Detail({detailTodo,setDetailTodo,searchParams}) {
-
-    console.log(searchParams.get('id'))
     
     useEffect(() => {
-        if(searchParams.get('id')){
+        if(searchParams.get('id')!==null){
             axios.get(`http://localhost:8080/todos/${searchParams.get('id')}`,{
             headers: {
                 Authorization: localStorage.token

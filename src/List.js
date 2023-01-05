@@ -4,7 +4,7 @@ import { useState,Fragment,useEffect } from "react";
 import {Modal} from "flowbite-react";
 import axios from "axios";
 
-function List() {
+function List({setDetailTodo}) {
 
     const [open, setOpen] = useState(false);
     const [addTodo, setAddTodo] = useState('');
@@ -74,7 +74,7 @@ function List() {
             <ul>
                 {
                     todoList.map((item)=>(
-                        <ListItem key={item.id} item={item} setTodoList={setTodoList}/>
+                        <ListItem key={item.id} item={item} setTodoList={setTodoList} setDetailTodo={setDetailTodo}/>
                     ))
                 }
                 <li className="flex items-center py-3">

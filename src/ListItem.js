@@ -3,10 +3,10 @@ import { React, useState,Fragment } from "react";
 import {Modal} from "flowbite-react";
 
 
-function ListItem({item,setTodoList}) {
+function ListItem({item,setTodoList,setDetailTodo}) {
 
     const [openEdit, setOpenEdit] = useState(false);
-
+    
     const [editTodo, setEditTodo] = useState('');
     const [editDetail, setEditDetail] = useState('');
 
@@ -71,8 +71,16 @@ function ListItem({item,setTodoList}) {
             });
     }
 
-    const btnDetail = () => {
-        
+    const btnDetail = (id) => {
+        axios.get(`http://localhost:8080/todos/${id}`,{
+                headers: {
+                    Authorization: localStorage.token
+                }
+            }).then((res)=>{
+                setDetailTodo(res.data.data)
+            }).catch((err) => {
+                alert('예상치 못한 오류 발생!');
+            });
     }
 
     return (
@@ -80,7 +88,7 @@ function ListItem({item,setTodoList}) {
             <div>
                 <input type="checkbox" className="rounded bg-white/0 border-[#767676] border-[2px]
                 focus:border-[#A6A6A6] focus:bg-white/0 text-[#A3CEA7] focus:ring-1 focus:ring-offset-2 focus:ring-[#A3CEA7]/[0.5]"/>
-                <span className="ml-5 align-middle text-[18px] cursor-pointer" onClick={btnDetail}>{item.title}</span>
+                <span className="ml-5 align-middle text-[18px] cursor-pointer" onClick={()=>btnDetail(item.id)}>{item.title}</span>
             </div>                                
             
             <div>

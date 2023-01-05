@@ -1,4 +1,4 @@
-import {React} from 'react'
+import {React,useState} from 'react'
 import Header from "./Header"
 import Footer from "./Footer"
 import List from "./List"
@@ -6,6 +6,8 @@ import Detail from "./Detail"
 
 
 export default function Main({navigate}) {
+    
+    const [detailTodo, setDetailTodo] = useState('');
 
     return (
         <div className="h-screen flex flex-col w-full">
@@ -14,9 +16,9 @@ export default function Main({navigate}) {
             
             <div className="grid grid-cols-3 flex-1">
 
-                <List/>                
+                <List setDetailTodo={setDetailTodo}/>                
 
-                <Detail/>
+                <Detail detailTodo={detailTodo} />
             
             </div>
             

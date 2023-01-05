@@ -26,7 +26,8 @@ function List() {
     
     const btnOpenAdd=()=>{
         setOpen(!open);
-        
+        setAddTodo('')
+        setDetail('')
     }
 
     const inputTodo=(e)=>{
@@ -48,10 +49,22 @@ function List() {
             Authorization: localStorage.token
         }}
         ).then((res)=>{
-            console.log(res);
-            setOpen(!open);
+            //console.log(res);
+            alert('Todo를 추가했어요!');
+            
+            axios.get(`http://localhost:8080/todos`,{
+                headers: {
+                    Authorization: localStorage.token
+                }
+            }).then((res)=>{
+                setTodoList(res.data.data)
+            }).catch((err) => {
+                alert('예상치 못한 오류 발생!');
+            });
+            btnOpenAdd()
+            
         }).catch((err)=>{
-            console.log('err');
+            alert('예상치 못한 오류 발생!');
         })
     }
 
@@ -61,7 +74,7 @@ function List() {
             <ul>
                 {
                     todoList.map((item)=>(
-                        <ListItem key={item.id} item={item}/>
+                        <ListItem key={item.id} item={item} setTodoList={setTodoList}/>
                     ))
                 }
                 <li className="flex items-center py-3">
@@ -74,8 +87,8 @@ function List() {
                             <Modal.Body>
                                 <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8 ">
                                     <h3 className="text-xl font-medium text-gray-900">✅ Todo 추가하기</h3>
-                                    <input type="text" className="mt-0 block w-full px-0.5 border-0 border-b-2 border-[#A6A6A6] focus:ring-0 focus:border-[#A3CEA7]" placeholder="할 일" onChange={inputTodo}/>
-                                    <textarea className="mt-0 block w-full px-0.5 border-0 border-b-2 border-[#A6A6A6] focus:ring-0 focus:border-[#A3CEA7]" rows="2" placeholder="상세설명" onChange={inputDetail}></textarea>
+                                    <input type="text" className="mt-0 block w-full px-0.5 border-0 border-b-2 border-[#A6A6A6] focus:ring-0 focus:border-[#A3CEA7]" placeholder="할 일" onChange={inputTodo} value={addTodo}/>
+                                    <textarea className="mt-0 block w-full px-0.5 border-0 border-b-2 border-[#A6A6A6] focus:ring-0 focus:border-[#A3CEA7]" rows="2" placeholder="상세설명" onChange={inputDetail} value={detail}></textarea>
 
                                     <div className="flex justify-end">
                                         <button className="py-[5px] px-3 rounded-[3px] border-[1px] border-[#A6A6A6] bg-[#ffffff] text-[#000000] font-semibold text-[14px] cursor-pointer" onClick={btnOpenAdd}> 취소</button>

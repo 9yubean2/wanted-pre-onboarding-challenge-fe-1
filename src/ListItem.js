@@ -41,6 +41,16 @@ function ListItem({item,setTodoList,setDetailTodo,setSearchParams}) {
                 }
             }).then((res)=>{
                 setTodoList(res.data.data)
+                axios.get(`http://localhost:8080/todos/${id}`,{
+            headers: {
+                Authorization: localStorage.token
+            }
+        }).then((result)=>{
+            setDetailTodo(result.data.data)
+            //setSearchParams({id:`${id}`});
+        }).catch((error) => {
+            alert('예상치 못한 오류 발생!');
+        });
             }).catch((err) => {
                 alert('예상치 못한 오류 발생!');
             });
@@ -100,7 +110,7 @@ function ListItem({item,setTodoList,setDetailTodo,setSearchParams}) {
                             <Modal.Header/>
                             <Modal.Body>
                                 <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8 ">
-                                    <h3 className="text-xl font-medium text-gray-900">✅ Todo 추가하기</h3>
+                                    <h3 className="text-xl font-medium text-gray-900">✅ Todo 수정하기</h3>
                                     <input type="text" className="mt-0 block w-full px-0.5 border-0 border-b-2 border-[#A6A6A6] focus:ring-0 focus:border-[#A3CEA7]" placeholder={item.title} onChange={inputEditTodo}/>
                                     <textarea className="mt-0 block w-full px-0.5 border-0 border-b-2 border-[#A6A6A6] focus:ring-0 focus:border-[#A3CEA7]" rows="2" placeholder={item.content} onChange={inputEditDetail} ></textarea>
 

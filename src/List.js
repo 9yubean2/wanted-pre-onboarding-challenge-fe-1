@@ -4,7 +4,10 @@ import { useState,Fragment,useEffect } from "react";
 import {Modal} from "flowbite-react";
 import axios from "axios";
 
-function List({setDetailTodo}) {
+
+function List({setDetailTodo,setSearchParams}) {
+
+    //const [searchParams, setSearchParams]=useSearchParams();
 
     const [open, setOpen] = useState(false);
     const [addTodo, setAddTodo] = useState('');
@@ -18,9 +21,9 @@ function List({setDetailTodo}) {
             }
         }).then((res)=>{
             setTodoList(res.data.data)
-            console.log(res);
+            //console.log(res);
         }).catch((err) => {
-            console.log(err);
+            //console.log(err);
         }); 
     },[setTodoList]);
     
@@ -74,7 +77,7 @@ function List({setDetailTodo}) {
             <ul>
                 {
                     todoList.map((item)=>(
-                        <ListItem key={item.id} item={item} setTodoList={setTodoList} setDetailTodo={setDetailTodo}/>
+                        <ListItem key={item.id} item={item} setTodoList={setTodoList} setDetailTodo={setDetailTodo} setSearchParams={setSearchParams}/>
                     ))
                 }
                 <li className="flex items-center py-3">

@@ -3,7 +3,7 @@ import { React, useState,Fragment } from "react";
 import {Modal} from "flowbite-react";
 
 
-function ListItem({item,setTodoList,setDetailTodo}) {
+function ListItem({item,setTodoList,setDetailTodo,setSearchParams}) {
 
     const [openEdit, setOpenEdit] = useState(false);
     
@@ -72,15 +72,17 @@ function ListItem({item,setTodoList,setDetailTodo}) {
     }
 
     const btnDetail = (id) => {
-        axios.get(`http://localhost:8080/todos/${id}`,{
-                headers: {
-                    Authorization: localStorage.token
-                }
-            }).then((res)=>{
-                setDetailTodo(res.data.data)
-            }).catch((err) => {
-                alert('예상치 못한 오류 발생!');
-            });
+        // axios.get(`http://localhost:8080/todos/${id}`,{
+        //         headers: {
+        //             Authorization: localStorage.token
+        //         }
+        //     }).then((res)=>{
+        //         setDetailTodo(res.data.data)
+        //         setSearchParams({id:`${id}`});
+        //     }).catch((err) => {
+        //         alert('예상치 못한 오류 발생!');
+        //     });
+        setSearchParams({id:`${id}`});
     }
 
     return (
